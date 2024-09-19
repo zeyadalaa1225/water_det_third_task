@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Satellite Image Segmentation</title>
+    <style>
+        /* Basic reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body styling */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(to right, #e0f7fa, #80deea);
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Container styling */
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 30px;
+            background: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+
+        /* Heading styling */
+        h1 {
+            color: #333;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        /* Form input styling */
+        input[type="file"] {
+            margin: 20px 0;
+            padding: 10px;
+            border: 2px solid #007bff;
+            border-radius: 4px;
+            background-color: #e0f7fa;
+        }
+
+        /* Button styling */
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1.1em;
+            font-weight: 500;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+            transform: translateY(-2px);
+        }
+
+        button:active {
+            background-color: #004494;
+            transform: translateY(0);
+        }
+
+        /* Image styling */
+        img {
+            margin-top: 20px;
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Additional styling for smaller screens */
+        @media (max-width: 600px) {
+            .container {
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            button {
+                padding: 10px 20px;
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Satellite Image Segmentation</h1>
+        <form action="/predict" method="post" enctype="multipart/form-data">
+            <input type="file" name="file" accept="image/*" required>
+            <button type="submit">Upload and Predict</button>
+        </form>
+        {% if image_url %}
+            <h2>Prediction Result</h2>
+            <img src="{{ image_url }}" alt="Prediction Result">
+        {% endif %}
+    </div>
+</body>
+</html>
